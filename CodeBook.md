@@ -204,7 +204,7 @@ Average of standard deviation of magnitude of gyroscope time domain signals for 
         Normalized and bounded within [-1,1]
 
 
-#### Fourier-transformed readings
+#### Fourier-transformed frequency domain variables
 * AveragefBodyAccmeanX
 * AveragefBodyAccmeanY
 * AveragefBodyAccmeanZ
