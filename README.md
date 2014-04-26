@@ -5,7 +5,7 @@
 * 2. Extract zip archive
 * 3. Read in data and labels; merge sets
 * 4. Extract measurements on means and standard deviations
-* 5.
+* 5. Label activities
 * 6.
 * etc.
 
@@ -27,6 +27,12 @@ After reading in these lists, the script applies the column names to both the xt
 
 This part of the script creates an index vector of the columns with variablenames containing "mean" or "std", then subsets the combined dataset on those column indices, along with the last two columns that contain the activity code and subject ID
 
-N.B.that mean frequencies are excluded from the extraction as they are not statistics of direct measurements, but of frequencies of measurements.  If mean frequencies are desired in the subset for analysis, the run_analysis.R code may be modified as follows: change "meanStdCols" preceding the assignment operator in the first line of this section of the script to "extractCols", and delete the following two lines
+N.B. that mean frequencies are excluded from the extraction as they are not statistics of direct measurements, but of frequencies of measurements.  If mean frequencies are desired in the subset for analysis, the run_analysis.R code may be modified as follows: change "meanStdCols" preceding the assignment operator in the first line of this section of the script to "extractCols", and delete the following two lines
 
-### 5. 
+### 5. Label activities
+
+The loop in this part of the script fetches the activity code for each observation, looks it up in the "activities" lookup key that was read into R during step 3, and swaps the value for the activity character string.
+
+A couple things to note here: this relies on the activities table being in ascending numerical order with respect to the keys (which it should be unless the files at zipURL change), and this loop operation is also somewhat slow -- takes just under 2 minutes to process on my machine.
+
+### 6. 

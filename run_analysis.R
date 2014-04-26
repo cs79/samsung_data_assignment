@@ -40,13 +40,9 @@ activities <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
 names(xtest) <- features$V2
 names(xtrain) <- features$V2
 
-## add activity labels to the datasets
-xtest$activityCode <- ytest$V1
-xtrain$activityCode <- ytrain$V1
-
-## add subject IDs to the datasets
-xtest$subjectID <- subjectTest$V1
-xtrain$subjectID <- subjectTrain$V1
+## add subject IDs and activity labels to the datasets
+xtest <- cbind(subjectID = subjectTest$V1, activityCode = ytest$V1, xtest)
+xtrain <- cbind(subjectID = subjectTrain$V1, activityCode = ytrain$V1, xtrain)
 
 ## combine the test and training data
 combinedData <- rbind(xtest, xtrain)
@@ -57,18 +53,19 @@ combinedData <- rbind(xtest, xtrain)
 meanStdCols <- sort(c(grep("mean", features$V2), grep("std", features$V2)))
 meanFreqCols <- grep("meanFreq", features$V2)
 extractCols <- meanStdCols[!meanStdCols %in% meanFreqCols]
-extractData <- combinedData[,c(extractCols, ncol(combinedData)-1, ncol(combinedData))]
+extractData <- combinedData[,c(1, 2, (extractCols+2))]
 
 
 ## 5. Label activities
 
-<code to change values of activityCode to the corresponding label in "activities" vector>
+for(i in 1:nrow(extractData))  {
+        swap <- extractData[i,]$activityCode
+        extractData[i,]$activityCode <- as.character(activities[swap,"V2"])
+}
 
-#rename (use names() function) -- "appropriate names" (DON'T USE SPACES!!)
 #MAKE SURE THIS GOES INTO THE CODE BOOK
 
 
-
-#create new, independent, tidy data set and write to file that can be uploaded
+## 6. create new, independent, tidy data set and write to file that can be uploaded
 
 
