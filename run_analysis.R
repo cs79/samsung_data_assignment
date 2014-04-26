@@ -63,9 +63,22 @@ for(i in 1:nrow(extractData))  {
         extractData[i,]$activityCode <- as.character(activities[swap,"V2"])
 }
 
-#MAKE SURE THIS GOES INTO THE CODE BOOK
 
+## 6. Create tidy dataset and write to file
 
-## 6. create new, independent, tidy data set and write to file that can be uploaded
+## melt and cast
+library(reshape2)
+molten <- melt(extractData, id=names(extractData)[1:2])
+reshaped <- dcast(molten, formula=subjectID + activityCode ~ variable,mean)
 
+## update labels to denote that these are now average columns
+avgNames <- (names(reshaped)[1:2])
+namevector <- names(reshaped)
+for(i in 3:ncol(reshaped)) {
+        avgNames <- c(avgNames, paste("Average", namevector[i], sep = ""))
+}
+names(reshaped) <- gsub("[[:punct:]]", "", avgNames)
 
+## export tidy file
+
+write.table(reshaped, file="./data/tidySamsungData.txt")

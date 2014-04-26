@@ -1,13 +1,12 @@
 ## This document explains how the run_analysis.R script functions
 
-### The script is divided into XXXX numbered sections, as follows:
+### The script is divided into 6 numbered sections, as follows:
 * 1. Getting the data
 * 2. Extract zip archive
 * 3. Read in data and labels; merge sets
 * 4. Extract measurements on means and standard deviations
 * 5. Label activities
-* 6.
-* etc.
+* 6. Create tidy dataset and write to file
 
 ### 1. Getting the data
 The script in this section sets zipURL to the URL of the zip file containing the data.
@@ -35,4 +34,8 @@ The loop in this part of the script fetches the activity code for each observati
 
 A couple things to note here: this relies on the activities table being in ascending numerical order with respect to the keys (which it should be unless the files at zipURL change), and this loop operation is also somewhat slow -- takes just under 2 minutes to process on my machine.
 
-### 6. 
+### 6. Create tidy dataset and write to file
+
+The script in this section first converts the data extract to a molten data frame, then reshapes the data, casting the mean of each column value per activity per test subject.  Next, the column labels are updated to the set described in the CodeBook.md file, indicating that these are average values.  Finally, a new file called "tidySamsungData.txt" is written to the same "./data" directory created at the beginning of the script.
+
+N.B. that when tidySamsungData.txt is read back in to R, the "activityCode" column will be converted to a factor (rather than character, as it was written), unless stringsAsFactors=FALSE is specified in read.table().
