@@ -28,19 +28,25 @@ unzip("./data/samsungdata.zip", exdir = "./data")
 
 xtest <- read.table("./data/UCI HAR Dataset/test/X_test.txt")
 ytest <- read.table("./data/UCI HAR Dataset/test/y_test.txt")
+subjectTest <- read.table("./data/UCI HAR Dataset/test/subject_test.txt")
 xtrain <- read.table("./data/UCI HAR Dataset/train/X_train.txt")
 ytrain <- read.table("./data/UCI HAR Dataset/train/y_train.txt")
+subjectTrain <- read.table("./data/UCI HAR Dataset/train/subject_train.txt")
 
 features <- read.table("./data/UCI HAR Dataset/features.txt")
 activities <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
 
-## name cols in the datasets
+## name feature cols in the datasets
 names(xtest) <- features$V2
 names(xtrain) <- features$V2
 
 ## add activity labels to the datasets
 xtest$activityCode <- ytest$V1
 xtrain$activityCode <- ytrain$V1
+
+## add subject IDs to the datasets
+xtest$subjectID <- subjectTest$V1
+xtrain$subjectID <- subjectTrain$V1
 
 ## combine the test and training data
 combinedData <- rbind(xtest, xtrain)

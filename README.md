@@ -18,9 +18,10 @@ dateDownloaded records the date of download, in case the linked zip file is alte
 This part of the script simply unzips the contents of downloaded file to the same ./data directory for processing in subsequent sections
 
 ### 3. Read in data and labels; merge sets
-This part of the script reads in 6 lists: the test and training sets, the activity levels for each of the test and training sets, the labels for the feature vectors (i.e. column names), and the activity code lookup (for later use).
 
-After reading in these lists, the script applies the column names to both the xtest and xtrain sets, adds an extra column "activityCode" to each of the test and training sets with the appropriate values from ytest and ytrain, respectively, then combines the sets which now share 562 common columns
+This part of the script reads in 8 lists: the test and training sets, the activity levels and subject IDs for each of the test and training sets, the labels for the feature vectors (i.e. column names), and the activity code lookup key (for later use).
+
+After reading in these lists, the script applies the column names to both the xtest and xtrain sets, adds an extra column "activityCode" to each of the test and training sets with the appropriate values from ytest and ytrain, respectively, adds an extra column "subjectID" to each of the test and training sets with the appropriate values from subjectTest and subjectTrain, respectively, and finally combines the sets which now share 563 common columns
 
 ### 4. 
 
