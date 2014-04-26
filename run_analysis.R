@@ -24,32 +24,40 @@ dateDownloaded <- date()
 unzip("./data/samsungdata.zip", exdir = "./data")
 
 
-# merge sets (and cleaning beforehand, if required -- examine the data)
+# 3. Read in data and labels; merge sets
 
-similar to quiz questions -- see History / notes for merging
+xtest <- read.table("./data/UCI HAR Dataset/test/X_test.txt")
+ytest <- read.table("./data/UCI HAR Dataset/test/y_test.txt")
+xtrain <- read.table("./data/UCI HAR Dataset/train/X_train.txt")
+ytrain <- read.table("./data/UCI HAR Dataset/train/y_train.txt")
 
-X_test is the test data [2947 rows by 561 columns]
-y_test are the "activity levels" of the data (1 - 6, coded activities) [1 per row, 2947 total]
-(assuming similar for X_train and y_train; check this though)
-features.txt has the list of features of an observation - e.g. a single "line" of X_test once it
-is read into R will have 561 columns; these are the column names for that table [561 feature names]
-  - check to make sure that the train files are similar dimensionality, assuming they should be
+features <- read.table("./data/UCI HAR Dataset/features.txt")
+activities <- read.table("./data/UCI HAR Dataset/activity_labels.txt")
 
-idea (may not be entirely right, but something to start with):
-        use name() and the features.txt labels to label the columns in X_* files (if they are the
-                                                                                  same)
-        use cbind() to add the descriptive columns (y_*) on to the X_* sets
-        convert the data in the descriptive column to something human-readable (later?)
-        merge the two sets together (each of test and train should have names (that match) and 
-                                     also a matched column of activity description)
-        ???
-        profit
+## name cols in the datasets
+names(xtest) <- features$V2
+names(xtrain) <- features$V2
 
-# Extract certain measurements (into a new dataframe?)
+## add activity labels to the datasets
+xtest$activityCode <- ytest$V1
+xtrain$activityCode <- ytrain$V1
+
+## combine the test and training data
+combinedData <- rbind(xtest, xtrain)
+
+
+## 4. Extract measurements on means and standard deviations
+
+
+
 
 
 #rename (use names() function) -- "appropriate names" (DON'T USE SPACES!!)
 #MAKE SURE THIS GOES INTO THE CODE BOOK
+
+idea (may not be entirely right, but something to start with):
+        convert the data in the descriptive column to something human-readable (later?)
+
 
 
 #create new, independent, tidy data set
