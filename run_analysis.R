@@ -54,20 +54,21 @@ combinedData <- rbind(xtest, xtrain)
 
 ## 4. Extract measurements on means and standard deviations
 
+meanStdCols <- sort(c(grep("mean", features$V2), grep("std", features$V2)))
+meanFreqCols <- grep("meanFreq", features$V2)
+extractCols <- meanStdCols[!meanStdCols %in% meanFreqCols]
+extractData <- combinedData[,c(extractCols, ncol(combinedData)-1, ncol(combinedData))]
 
 
+## 5. Label activities
 
+<code to change values of activityCode to the corresponding label in "activities" vector>
 
 #rename (use names() function) -- "appropriate names" (DON'T USE SPACES!!)
 #MAKE SURE THIS GOES INTO THE CODE BOOK
 
-idea (may not be entirely right, but something to start with):
-        convert the data in the descriptive column to something human-readable (later?)
 
 
-
-#create new, independent, tidy data set
-
+#create new, independent, tidy data set and write to file that can be uploaded
 
 
-#write to csv ?

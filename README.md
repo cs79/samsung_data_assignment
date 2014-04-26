@@ -4,7 +4,7 @@
 * 1. Getting the data
 * 2. Extract zip archive
 * 3. Read in data and labels; merge sets
-* 4. etc.
+* 4. Extract measurements on means and standard deviations
 * 5.
 * 6.
 * etc.
@@ -23,7 +23,10 @@ This part of the script reads in 8 lists: the test and training sets, the activi
 
 After reading in these lists, the script applies the column names to both the xtest and xtrain sets, adds an extra column "activityCode" to each of the test and training sets with the appropriate values from ytest and ytrain, respectively, adds an extra column "subjectID" to each of the test and training sets with the appropriate values from subjectTest and subjectTrain, respectively, and finally combines the sets which now share 563 common columns
 
-### 4. 
+### 4. Extract measurements on means and standard deviations
 
+This part of the script creates an index vector of the columns with variablenames containing "mean" or "std", then subsets the combined dataset on those column indices, along with the last two columns that contain the activity code and subject ID
 
+N.B.that mean frequencies are excluded from the extraction as they are not statistics of direct measurements, but of frequencies of measurements.  If mean frequencies are desired in the subset for analysis, the run_analysis.R code may be modified as follows: change "meanStdCols" preceding the assignment operator in the first line of this section of the script to "extractCols", and delete the following two lines
 
+### 5. 
