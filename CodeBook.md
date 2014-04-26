@@ -23,14 +23,16 @@ The sensor signals (accelerometer and gyroscope) were pre-processed by applying 
 The following variable names are the feature vector of the tidy dataset; for descriptions of features in the raw dataset, please refer to the original researchers' features_info.txt file included in the zip of raw data.
 
 #### Identifying variables
-subjectID
-        Numerical Code for subjects per the raw dataset.
+* subjectID
+
+Numerical Code for subjects per the raw dataset.
         
         Values:
         1-30; while numeric, they do not indicate ordinality
 
-activityCode
-        Activities performed by the experimental subjects.  Activity values indicate the activity performed.
+* activityCode
+
+Activities performed by the experimental subjects.  Activity values indicate the activity performed.
 
         Values:
         WALKING
@@ -41,128 +43,275 @@ activityCode
         LAYING
 
 #### Time domain variables
-AveragetBodyAccmeanX
-AveragetBodyAccmeanY
-AveragetBodyAccmeanZ
-        Average of average time domain signals for body acceleration in three dimensional axes (x, y, and z suffixes).
+* AveragetBodyAccmeanX
+* AveragetBodyAccmeanY
+* AveragetBodyAccmeanZ
+
+Average of average accelerometer readings of time domain signals for body in three dimensional axes (x, y, and z suffixes).
         
         Values:
         Normalized and bounded within [-1,1]
 
-AveragetBodyAccstdX
-AveragetBodyAccstdY
-AveragetBodyAccstdZ
-        Average of standard deviations of time domain signals for body acceleration in three dimensional axes (x, y, and z suffixes).
+* AveragetBodyAccstdX
+* AveragetBodyAccstdY
+* AveragetBodyAccstdZ
+
+Average of standard deviations of accelerometer readings of time domain signals for body in three dimensional axes (x, y, and z suffixes).
         
         Values:
         Normalized and bounded within [-1,1]
 
-AveragetGravityAccmeanX
-AveragetGravityAccmeanY
-AveragetGravityAccmeanZ
-        Average of average time domain signals for gravity acceleration in three dimensional axes (x, y, and z suffixes).
+* AveragetGravityAccmeanX
+* AveragetGravityAccmeanY
+* AveragetGravityAccmeanZ
+
+Average of average accelerometer readings of time domain signals for gravity in three dimensional axes (x, y, and z suffixes).
         
         Values:
         Normalized and bounded within [-1,1]
 
-AveragetGravityAccstdX
-AveragetGravityAccstdY
-AveragetGravityAccstdZ
-        Average of standard deviations of time domain signals for body acceleration in three dimensional axes (x, y, and z suffixes).
+* AveragetGravityAccstdX
+* AveragetGravityAccstdY
+* AveragetGravityAccstdZ
+
+Average of standard deviations of accelerometer readings of time domain signals for gravity in three dimensional axes (x, y, and z suffixes).  
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragetBodyAccJerkmeanX
+* AveragetBodyAccJerkmeanY
+* AveragetBodyAccJerkmeanZ
+
+Average of average accelerometer readings of time domain signals for body jerk in three dimensional axes (x, y, and z suffixes).
         
         Values:
         Normalized and bounded within [-1,1]
 
-AveragetBodyAccJerkmeanX
-AveragetBodyAccJerkmeanY
-AveragetBodyAccJerkmeanZ
-        Average of average of time domain signals for body jerk in three dimensional axes (x, y, and z suffixes).
+* AveragetBodyAccJerkstdX
+* AveragetBodyAccJerkstdY
+* AveragetBodyAccJerkstdZ
+
+Average of standard deviations of accelerometer readings of time domain signals for body jerk in three dimensional axes (x, y, and z suffixes).  
+        
+        Values:
+        Normalized and bounded within [-1,1]
+        
+* AveragetBodyGyromeanX
+* AveragetBodyGyromeanY
+* AveragetBodyGyromeanZ
+
+Average of average gyroscope readings of time domain signals for body in three dimensional axes (x, y, and z suffixes).
         
         Values:
         Normalized and bounded within [-1,1]
 
-AveragetBodyAccJerkstdX
-AveragetBodyAccJerkstdY
-AveragetBodyAccJerkstdZ
-        Average of standard deviations of time domain signals for body jerk in three dimensional axes (x, y, and z suffixes).
-        
-        Values:
-        Normalized and bounded within [-1,1]
-        
-AveragetBodyGyromeanX
-AveragetBodyGyromeanY
-AveragetBodyGyromeanZ
-        Average of average of time domain signals for gyroscope readings in three dimensional axes (x, y, and z suffixes).
+* AveragetBodyGyrostdX
+* AveragetBodyGyrostdY
+* AveragetBodyGyrostdZ
+
+Average of standard deviations of gyroscope readings of time domain signals for body in three dimensional axes (x, y, and z suffixes).
         
         Values:
         Normalized and bounded within [-1,1]
 
-AveragetBodyGyrostdX
-AveragetBodyGyrostdY
-AveragetBodyGyrostdZ
-        Average of standard deviations of time domain signals for gyroscope readings in three dimensional axes (x, y, and z suffixes).
+* AveragetBodyGyroJerkmeanX
+* AveragetBodyGyroJerkmeanY
+* AveragetBodyGyroJerkmeanZ
+
+Average of average gyroscope readings of time domain signals for body jerk in three dimensional axes (x, y, and z suffixes).
         
+        Values:
+        Normalized and bounded within [-1,1]
+        
+* AveragetBodyGyroJerkstdX
+* AveragetBodyGyroJerkstdY
+* AveragetBodyGyroJerkstdZ
+
+Average of standard deviations of gyroscope readings of time domain signals for body jerk in three dimensional axes (x, y, and z suffixes).
+        
+        Values:
+        Normalized and bounded within [-1,1]
+        
+* AveragetBodyAccMagmean
+
+Average of average magnitude of accelerometer time domain signals for body in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+        
+* AveragetBodyAccMagstd
+
+Average of standard deviation of magnitude of accelerometer time domain signals for body in three dimensions calculated using Euclidean norm.
+
         Values:
         Normalized and bounded within [-1,1]
 
-AveragetBodyGyroJerkmeanX
-AveragetBodyGyroJerkmeanY
-AveragetBodyGyroJerkmeanZ
-        Average of average of time domain signals for gyroscope jerk readings in three dimensional axes (x, y, and z suffixes).
-        
+* AveragetGravityAccMagmean
+
+Average of average magnitude of accelerometer time domain signals for gravity in three dimensions calculated using Euclidean norm.
+
         Values:
         Normalized and bounded within [-1,1]
-        
-AveragetBodyGyroJerkstdX
-AveragetBodyGyroJerkstdY
-AveragetBodyGyroJerkstdZ
-        Average of standard deviation of time domain signals for gyroscope jerk readings in three dimensional axes (x, y, and z suffixes).
-        
+
+* AveragetGravityAccMagstd
+
+Average of standard deviation of magnitude of accelerometer time domain signals for gravity in three dimensions calculated using Euclidean norm.
+
         Values:
         Normalized and bounded within [-1,1]
-        
-AveragetBodyAccMagmean
-AveragetBodyAccMagstd
-AveragetGravityAccMagmean
-AveragetGravityAccMagstd
-AveragetBodyAccJerkMagmean
-AveragetBodyAccJerkMagstd
-AveragetBodyGyroMagmean
-AveragetBodyGyroMagstd
-AveragetBodyGyroJerkMagmean
-AveragetBodyGyroJerkMagstd
+
+* AveragetBodyAccJerkMagmean
+
+Average of average magnitude of accelerometer time domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragetBodyAccJerkMagstd
+
+Average of standard deviation of magnitude of accelerometer time domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragetBodyGyroMagmean
+
+Average of average magnitude of gyroscope time domain signals for body in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragetBodyGyroMagstd
+
+Average of standard deviation of magnitude of gyroscope time domain signals for body in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragetBodyGyroJerkMagmean
+
+Average of average magnitude of gyroscope time domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragetBodyGyroJerkMagstd
+
+Average of standard deviation of magnitude of gyroscope time domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
 
 
 #### Fourier-transformed readings
-AveragefBodyAccmeanX
-AveragefBodyAccmeanY
-AveragefBodyAccmeanZ
+* AveragefBodyAccmeanX
+* AveragefBodyAccmeanY
+* AveragefBodyAccmeanZ
 
-AveragefBodyAccstdX
-AveragefBodyAccstdY
-AveragefBodyAccstdZ
+Average of average fast-fourier-transformed accelerometer readings of frequency domain signals for body in three dimensional axes (x, y, and z suffixes).
+        
+        Values:
+        Normalized and bounded within [-1,1]
 
-AveragefBodyAccJerkmeanX
-AveragefBodyAccJerkmeanY
-AveragefBodyAccJerkmeanZ
+* AveragefBodyAccstdX
+* AveragefBodyAccstdY
+* AveragefBodyAccstdZ
 
-AveragefBodyAccJerkstdX
-AveragefBodyAccJerkstdY
-AveragefBodyAccJerkstdZ
+Average of standard deviation of fast-fourier-transformed accelerometer readings of frequency domain signals for body in three dimensional axes (x, y, and z suffixes).
+        
+        Values:
+        Normalized and bounded within [-1,1]
 
-AveragefBodyGyromeanX
-AveragefBodyGyromeanY
-AveragefBodyGyromeanZ
+* AveragefBodyAccJerkmeanX
+* AveragefBodyAccJerkmeanY
+* AveragefBodyAccJerkmeanZ
 
-AveragefBodyGyrostdX
-AveragefBodyGyrostdY
-AveragefBodyGyrostdZ
+Average of average fast-fourier-transformed accelerometer readings of frequency domain signals for body jerk in three dimensional axes (x, y, and z suffixes).
+        
+        Values:
+        Normalized and bounded within [-1,1]
 
-AveragefBodyAccMagmean
-AveragefBodyAccMagstd
-AveragefBodyBodyAccJerkMagmean
-AveragefBodyBodyAccJerkMagstd
-AveragefBodyBodyGyroMagmean
-AveragefBodyBodyGyroMagstd
-AveragefBodyBodyGyroJerkMagmean
-AveragefBodyBodyGyroJerkMagstd
+* AveragefBodyAccJerkstdX
+* AveragefBodyAccJerkstdY
+* AveragefBodyAccJerkstdZ
+
+Average of standard deviation of fast-fourier-transformed accelerometer readings of frequency domain signals for body jerk in three dimensional axes (x, y, and z suffixes).
+        
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyGyromeanX
+* AveragefBodyGyromeanY
+* AveragefBodyGyromeanZ
+
+Average of average fast-fourier-transformed gyroscope readings of frequency domain signals for body in three dimensional axes (x, y, and z suffixes).
+        
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyGyrostdX
+* AveragefBodyGyrostdY
+* AveragefBodyGyrostdZ
+
+Average of standard deviation of fast-fourier-transformed gyroscope readings of frequency domain signals for body in three dimensional axes (x, y, and z suffixes).
+        
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyAccMagmean
+
+Average of average fast-fourier-transformed magnitude of accelerometer frequency domain signals for body in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyAccMagstd
+
+Average of standard deviation of fast-fourier-transformed magnitude of accelerometer frequency domain signals for body in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyBodyAccJerkMagmean
+
+Average of average fast-fourier-transformed magnitude of accelerometer frequency domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyBodyAccJerkMagstd
+
+Average of standard deviation of fast-fourier-transformed magnitude of accelerometer frequency domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyBodyGyroMagmean
+
+Average of average fast-fourier-transformed magnitude of gyrocope frequency domain signals for body in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyBodyGyroMagstd
+
+Average of standard deviation of fast-fourier-transformed magnitude of gyroscope frequency domain signals for body in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyBodyGyroJerkMagmean
+
+Average of average fast-fourier-transformed magnitude of gyrocope frequency domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
+* AveragefBodyBodyGyroJerkMagstd
+
+Average of standard deviation of fast-fourier-transformed magnitude of gyroscope frequency domain signals for body jerk in three dimensions calculated using Euclidean norm.
+
+        Values:
+        Normalized and bounded within [-1,1]
+
