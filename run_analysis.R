@@ -1,12 +1,6 @@
-## You should create one R script called run_analysis.R that does the following:
-
-## Merges the training and the test sets to create one data set.
-## Extracts only the measurements on the mean and standard deviation for each measurement. 
-## Uses descriptive activity names to name the activities in the data set
-## Appropriately labels the data set with descriptive activity names. 
-## Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
-
-
+## This script will download, process, and output a derivative subset of a data
+## collection obtained from the internet.  Please see README.md and CodeBook.md
+## for further details on this script and the variables it outputs.
 
 # 1. Getting the data:
 
@@ -48,7 +42,7 @@ xtrain <- cbind(subjectID = subjectTrain$V1, activityCode = ytrain$V1, xtrain)
 combinedData <- rbind(xtest, xtrain)
 
 
-## 4. Extract measurements on means and standard deviations
+# 4. Extract measurements on means and standard deviations
 
 meanStdCols <- sort(c(grep("mean", features$V2), grep("std", features$V2)))
 meanFreqCols <- grep("meanFreq", features$V2)
@@ -56,28 +50,26 @@ extractCols <- meanStdCols[!meanStdCols %in% meanFreqCols]
 extractData <- combinedData[,c(1, 2, (extractCols+2))]
 
 
-## 5. Label activities
-
-for(i in 1:nrow(extractData))  {
-        swap <- extractData[i,]$activityCode
-        extractData[i,]$activityCode <- as.character(activities[swap,"V2"])
-}
-
-
-## 6. Create tidy dataset and write to file
+# 5. Create tidy dataset with labeled activity names and write to file
 
 ## melt and cast
 library(reshape2)
 molten <- melt(extractData, id=names(extractData)[1:2])
 reshaped <- dcast(molten, formula=subjectID + activityCode ~ variable,mean)
 
-## update labels to denote that these are now average columns
+## update column labels to denote that these are now average columns
 avgNames <- (names(reshaped)[1:2])
 namevector <- names(reshaped)
 for(i in 3:ncol(reshaped)) {
         avgNames <- c(avgNames, paste("Average", namevector[i], sep = ""))
 }
 names(reshaped) <- gsub("[[:punct:]]", "", avgNames)
+
+## label activities with activity name rather than code key
+for(i in 1:nrow(reshaped))  {
+        swap <- reshaped[i,]$activityCode
+        reshaped[i,]$activityCode <- as.character(activities[swap,"V2"])
+}
 
 ## export tidy file
 
