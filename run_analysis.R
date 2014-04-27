@@ -2,23 +2,23 @@
 ## collection obtained from the internet.  Please see README.md and CodeBook.md
 ## for further details on this script and the variables it outputs.
 
-# 1. Getting the data:
+## 1. Getting the data:
 
 if(!file.exists("./data")) {dir.create("./data")}
 zipURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip"
-#Windows:
+## Windows:
 download.file(zipURL, destfile="./data/samsungdata.zip")
-#Mac:
+## Mac:
 download.file(zipURL, destfile="./data/samsungdata.zip", method="curl")
 dateDownloaded <- date()
 
 
-# 2. Extract zip archive:
+## 2. Extract zip archive:
 
 unzip("./data/samsungdata.zip", exdir = "./data")
 
 
-# 3. Read in data and labels; merge sets
+## 3. Read in data and labels; merge sets
 
 xtest <- read.table("./data/UCI HAR Dataset/test/X_test.txt")
 ytest <- read.table("./data/UCI HAR Dataset/test/y_test.txt")
@@ -42,7 +42,7 @@ xtrain <- cbind(subjectID = subjectTrain$V1, activityCode = ytrain$V1, xtrain)
 combinedData <- rbind(xtest, xtrain)
 
 
-# 4. Extract measurements on means and standard deviations
+## 4. Extract measurements on means and standard deviations
 
 meanStdCols <- sort(c(grep("mean", features$V2), grep("std", features$V2)))
 meanFreqCols <- grep("meanFreq", features$V2)
@@ -50,9 +50,10 @@ extractCols <- meanStdCols[!meanStdCols %in% meanFreqCols]
 extractData <- combinedData[,c(1, 2, (extractCols+2))]
 
 
-# 5. Create tidy dataset with labeled activity names and write to file
+## 5. Create tidy dataset with labeled activity names and write to file
 
-## melt and cast
+## melt and cast - NOTE: requires reshape2 package to be installed
+## please run install.packages("reshape2") if you have not installed already
 library(reshape2)
 molten <- melt(extractData, id=names(extractData)[1:2])
 reshaped <- dcast(molten, formula=subjectID + activityCode ~ variable,mean)
