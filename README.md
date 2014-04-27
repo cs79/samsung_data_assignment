@@ -1,12 +1,11 @@
 ## This document explains how the run_analysis.R script functions
 
-### The script is divided into 6 numbered sections, as follows:
+### The script is divided into 5 numbered sections, as follows:
 * 1. Getting the data
 * 2. Extract zip archive
 * 3. Read in data and labels; merge sets
 * 4. Extract measurements on means and standard deviations
-* 5. Label activities
-* 6. Create tidy dataset with labeled activity names and write to file
+* 5. Create tidy dataset with labeled activity names and write to file
 
 ### 1. Getting the data
 The script in this section sets zipURL to the URL of the zip file containing the data.
